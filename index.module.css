@@ -1,0 +1,11 @@
+#timer {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 3em;
+    font-weight: bold;
+    background-color: #222;
+    color: #0f0;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
