@@ -10,12 +10,15 @@
 </head>
 
 <body>
-    <div id="timer">00:00:00</div>
-    <button onclick="startTimer()">Start</button>
-    <button onclick="stopTimer()">Stop</button>
-    <button onclick="resetTimer()">Reset</button>
-    
-    
+    <div id="container">
+        <div id="timer">00:00:00</div>
+        <div id="buttons">
+            <button id="start-btn" onclick="startTimer()">Start</button>
+            <button id="stop-btn" onclick="stopTimer()">Stop</button>
+            <button id="reset-btn" onclick="resetTimer()">Reset</button>
+        </div>
+    </div>
+
     <script src="index.js"></script>
 </body>
 
