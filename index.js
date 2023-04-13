@@ -1,37 +1,40 @@
-let tiempo = 0;
-let cronometro;
-let running = false;
+var hours = 0;
+var minutes = 0;
+var seconds = 0;
+var timer;
 
-function iniciar() {
-  if (!running) {
-    running = true;
-    cronometro = setInterval(function () {
-      tiempo++;
-      actualizar();
-    }, 1000);
+function startTimer() {
+  if (!timer) {
+    timer = setInterval(showTime, 1000);
   }
 }
 
-function detener() {
-  clearInterval(cronometro);
-  running = false;
+function showTime() {
+  seconds++;
+  if (seconds == 60) {
+    seconds = 0;
+    minutes++;
+    if (minutes == 60) {
+      minutes = 0;
+      hours++;
+    }
+  }
+  var time = (hours ? (hours > 9 ? hours : "0" + hours) : "00") +
+    ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") +
+    ":" + (seconds > 9 ? seconds : "0" + seconds);
+  document.getElementById("timer").innerHTML = time;
 }
 
-function reiniciar() {
-  clearInterval(cronometro);
-  tiempo = 0;
-  running = false;
-  actualizar();
+function stopTimer() {
+  clearInterval(timer);
+  timer = null;
 }
 
-function actualizar() {
-  let horas = Math.floor(tiempo / 3600);
-  let minutos = Math.floor((tiempo - (horas * 3600)) / 60);
-  let segundos = tiempo - (horas * 3600) - (minutos * 60);
-
-  if (horas < 10) horas = "0" + horas;
-  if (minutos < 10) minutos = "0" + minutos;
-  if (segundos < 10) segundos = "0" + segundos;
-
-  document.getElementById("cronometro").innerHTML = horas + ":" + minutos + ":" + segundos;
+function resetTimer() {
+  clearInterval(timer);
+  timer = null;
+  hours = 0;
+  minutes = 0;
+  seconds = 0;
+  document.getElementById("timer").innerHTML = "00:00:00";
 }
